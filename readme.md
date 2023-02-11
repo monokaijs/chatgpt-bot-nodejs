@@ -1,7 +1,14 @@
-# Hướng dẫn làm Chatbot GPT cho Telegram với NodeJs và OpenAI
-> Author: [@monokaijs](https://monokaijs.com)
-> 
-> Bài gốc xem tại: [https://monokaijs.com/blog/sharing/tao-chatbot-gpt](https://monokaijs.com/blog/sharing/tao-chatbot-gpt)
+---
+layout: Post
+title: "Hướng dẫn làm Chatbot GPT cho Telegram"
+description: Hướng dẫn cách làm Chatbot GPT cho Telegram đơn giản và dễ hiểu sử dụng NodeJs - JavaScript
+date: '2023-02-11'
+tags:
+- sharing
+  images:
+- src: /photos/library-preview.jpg
+  alt: image alt attribute
+---
 
 Đợt này thấy mọi người bàn tán nhiều về ChatGPT quá, nên mình cũng mò mò thử nghịch coi làm được gì. Tình cờ phát hiện một số ý tưởng rất hay, thế nên viết một bài loa qua hướng dẫn mọi người cách để có thể tạo ra một con Chatbot trả lời "thông minh" như ChatGPT.
 
@@ -496,5 +503,8 @@ Quay lại Telegram thử một phát, và đây là kết quả:
 
 Goào, không biết nói gì hơn. Cơ bản thì nó đã chạy một cách khá khôn rồi. Tuy nhiên nếu để nói rằng khôn hẳn thì chắc là chưa. Dù sao thì đây chỉ là một Tutorial cỡ "vừa vừa" =)) mình không có nhiều cơ hội để giải thích, nếu có thời gian mình sẽ cố làm video cho các bạn.
 
-Còn hiện tại bài viết này cũng đã "rất rất dài" rồi. Mình nghĩ sẽ tạm thời kết thúc ở đây. Source code mình sẽ 
+Còn hiện tại bài viết này cũng đã "rất rất dài" rồi. Mình nghĩ sẽ tạm thời kết thúc ở đây.
+
+
+Source code: [Nhớ tự làm đi rồi hẵng click vào đây nha](https://github.com/monokaijs/chatgpt-bot-nodejs)
 
