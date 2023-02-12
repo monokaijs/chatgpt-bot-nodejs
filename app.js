@@ -16,6 +16,11 @@ DbService.connect().then(() => {
     const chatMsg = msg.text;         // Nội dung của tin nhắn đã nhận
     // Đầu tiên sẽ lấy thông tin user ra
     const user = await DbService.getUserByTelegramId(authorId);
+    if (msg.text === '/clear') {
+      // Xoá các tin nhắn cũ trong lịch sử
+      await DbService.clearUserMessages(user._id);
+      return bot.sendMessage(chatId, 'Messages has been cleared');
+    }
     // Trả lời tin nhắn dựa trên các tin nhắn cũ
     ChatGPTService.generateCompletion(chatMsg, user).then(responseMsg => {
       bot.sendMessage(chatId, responseMsg);
