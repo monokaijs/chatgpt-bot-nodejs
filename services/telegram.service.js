@@ -18,7 +18,6 @@ class TelegramService {
     const chatMsg = msg.text;         // Nội dung của tin nhắn đã nhận
     // Đầu tiên sẽ lấy thông tin user ra
     const user = await DbService.getUserByTelegramId(authorId);
-    console.log('user', user);
     if (msg.text === '/clear') {
       // Xoá các tin nhắn cũ trong lịch sử
       await DbService.clearUserMessages(user._id);
@@ -26,6 +25,7 @@ class TelegramService {
     }
     // Trả lời tin nhắn dựa trên các tin nhắn cũ
     ChatGPTService.generateCompletion(chatMsg, user).then(responseMsg => {
+      console.log('responseMsg', responseMsg);
       bot.sendMessage(chatId, responseMsg);
     });
   }
