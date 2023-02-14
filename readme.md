@@ -1,6 +1,8 @@
 # ChatGPT Bot with NodeJs
 Author: [@monokaijs](https://monokaijs.com)
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmonokaijs%2Fchatgpt-bot-nodejs)
+
 ### Note:
 This project can be run both using NodeJs or NextJs. I've tried to migrate this application
 for you to deploy it onto Vercel Platform without any obstacles.
