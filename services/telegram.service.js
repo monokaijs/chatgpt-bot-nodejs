@@ -24,10 +24,8 @@ class TelegramService {
       return bot.sendMessage(chatId, 'Messages has been cleared');
     }
     // Trả lời tin nhắn dựa trên các tin nhắn cũ
-    ChatGPTService.generateCompletion(chatMsg, user).then(responseMsg => {
-      console.log('responseMsg', responseMsg);
-      bot.sendMessage(chatId, responseMsg);
-    });
+    const responseMsg = await ChatGPTService.generateCompletion(chatMsg, user);
+    return bot.sendMessage(chatId, responseMsg);
   }
 }
 
