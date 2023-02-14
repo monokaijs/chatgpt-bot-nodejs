@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "mongoose": "^6.9.1",
+    "next": "^13.1.6",
     "node-telegram-bot-api": "^0.61.0",
     "nodemon": "^2.0.20",
     "openai": "^3.1.0"
