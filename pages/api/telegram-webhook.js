@@ -1,6 +1,7 @@
-import TelegramBot from "node-telegram-bot-api";
+import DbService from "../../services/db.service";
+import TelegramService from "../../services/telegram.service";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const vercelUrl = process.env.VERCEL_URL;
   const webhookPath = `https://${vercelUrl}/api/telegram-webhook`;
   if (req.method === 'GET') {
@@ -9,8 +10,6 @@ export default function handler(req, res) {
         message: 'Please deploy this project to Vercel first'
       });
     }
-    const telegramToken = process.env.TELEGRAM_KEY;
-    const bot = new TelegramBot(telegramToken, {polling: true});
     bot.setWebHook(webhookPath).then(() => {
       res.json({
         message: 'Telegram Webhook has been successfully set'
@@ -21,6 +20,13 @@ export default function handler(req, res) {
       })
     });
   } else {
-    console.log(req.method + ' request received');
+    const {body} = req;
+    const msg = body.message;
+    await DbService.connect();
+    TelegramService.register();
+    await TelegramService.responseToMessage(msg);
+    return res.json({
+      success: true
+    });
   }
 }
