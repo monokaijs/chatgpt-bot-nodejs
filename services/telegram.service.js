@@ -12,6 +12,7 @@ class TelegramService {
     return this.bot;
   }
   async responseToMessage(msg) {
+    const bot = this.bot;
     const authorId = msg.from.id      // Lấy id của người gửi
     const chatId = msg.chat.id;       // ID của cuộc trò chuyện hiện tại
     const chatMsg = msg.text;         // Nội dung của tin nhắn đã nhận
