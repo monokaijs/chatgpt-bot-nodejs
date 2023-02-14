@@ -10,7 +10,8 @@ export default async function handler(req, res) {
         message: 'Please deploy this project to Vercel first'
       });
     }
-    bot.setWebHook(webhookPath).then(() => {
+    TelegramService.register();
+    TelegramService.bot.setWebHook(webhookPath).then(() => {
       res.json({
         message: 'Telegram Webhook has been successfully set'
       });
