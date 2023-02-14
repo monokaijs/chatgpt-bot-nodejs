@@ -27,6 +27,18 @@ And then, run the command to run application in `develoment` mode:
 nodemon app.js
 ```
 
+**DO NOT FORGET** to add environment variables via `.env` file:
+```textmate
+OPENAI_KEY=<API Key you taken from OpenAI platform>
+MONGO_URI=<Put MongoDB URI here>
+TELEGRAM_KEY=<Put Telegram Bot Token here>
+```
+
+### Changelog
+##### Feb 14, 2023 - Implemented NextJs
+In this version, I have added support for Vercel deployment using Next.Js. This will enable you to use Vercel's platform
+to deploy this chatbot without having to set up your own server.
+
 ### Tutorials
 See the tutorial behind this bot here:
 - [Tutorial in Vietnamese](docs/tutorials.vi.md)
