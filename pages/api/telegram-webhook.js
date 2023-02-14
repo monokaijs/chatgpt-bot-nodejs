@@ -26,6 +26,7 @@ export default async function handler(req, res) {
     console.log(msg);
     await DbService.connect();
     TelegramService.register();
+    console.log('Telegram registered');
     await TelegramService.responseToMessage(msg);
     return res.json({
       success: true
