@@ -23,6 +23,7 @@ export default async function handler(req, res) {
   } else {
     const {body} = req;
     const msg = body.message;
+    console.log(msg);
     await DbService.connect();
     TelegramService.register();
     await TelegramService.responseToMessage(msg);
