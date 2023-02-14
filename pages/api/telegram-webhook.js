@@ -21,6 +21,6 @@ export default function handler(req, res) {
       })
     });
   } else {
-
+    console.log(req.method + ' request received');
   }
 }
