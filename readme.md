@@ -4,6 +4,13 @@ Author: [@monokaijs](https://monokaijs.com)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmonokaijs%2Fchatgpt-bot-nodejs)
 
 ### Note:
+⚠️ Warning: Vercel only provides you 10 secs for processing "function" (it means your bot only have
+10 seconds to response to the user), but OpenAI platforms often takes about 20 secs to process a request.
+This may lead your bot to not replying incoming messages. To resolve this, you can
+use another platform that allow a longer function processing time or upgrade to a higher plan on Vercel.
+
+Another side note is that using English in conversation will significant improve the response time from OpenAI. Be noticed!
+
 This project can be run both using NodeJs or NextJs. I've tried to migrate this application
 for you to deploy it onto Vercel Platform without any obstacles.
 
