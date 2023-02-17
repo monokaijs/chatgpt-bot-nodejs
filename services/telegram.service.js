@@ -1,6 +1,6 @@
-import TelegramBot from "node-telegram-bot-api";
-import DbService from "./db.service";
-import ChatGPTService from "./chatgpt.service";
+const TelegramBot = require("node-telegram-bot-api");
+const DbService = require ("./db.service");
+const ChatGPTService = require("./chatgpt.service");
 
 class TelegramService {
   bot;
@@ -34,4 +34,4 @@ class TelegramService {
 
 const telegramService = new TelegramService();
 
-export default telegramService;
+module.exports = telegramService;
