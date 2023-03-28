@@ -33,7 +33,7 @@ class ChatGPTService {
     });
 
     // Gửi request về OpenAI Platform để tạo text completion
-    const completion = await openai.createCompletion({
+    const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       temperature: 0.7,
       max_tokens: 1000,
