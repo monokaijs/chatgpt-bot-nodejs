@@ -12,35 +12,39 @@ class ChatGPTService {
       apiKey: process.env.OPENAI_KEY,
     });
     const openai = new OpenAIApi(configuration);
+    const messages = [{
+      role: 'system',
+      content: this.rolePlayIntroduction
+    }];
 
-    let fullPrompt = this.rolePlayIntroduction + '\n\n';
-
-    if (oldMessages && oldMessages.length > 0) {
-      fullPrompt += 'CHAT:\n';
-      // nếu có tin nhắn cũ thì thêm đoạn tin nhắn cũ đấy vào nội dung chat
-      for (let message of oldMessages) {
-        fullPrompt += `Người dùng: ${message.userMessage}\n`;
-        fullPrompt += `Bot ngáo: ${message.botMessage}\n\n`;
-      }
+    for (let conv of oldMessages) {
+      messages.push({
+        role: 'user',
+        content: conv.userMessage
+      });
+      messages.push({
+        role: 'assistant',
+        content: conv.botMessage
+      })
     }
-
-    fullPrompt += `Người dùng: ${prompt}\n`;
-    fullPrompt += `Bot ngáo: `;
-
-    console.log(fullPrompt);
+    messages.push({
+      role: 'user',
+      content: prompt
+    });
 
     // Gửi request về OpenAI Platform để tạo text completion
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: fullPrompt,
+      model: "gpt-3.5-turbo",
       temperature: 0.7,
       max_tokens: 1000,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
+      user: user?._id.toString(),
+      messages,
     });
     // Đoạn regex ở cuối dùng để loại bỏ dấu cách và xuống dòng dư thừa
-    const responseMessage = completion.data.choices[0].text.replace(/^\s+|\s+$/g, "");
+    const responseMessage = completion.data.choices[0].message.content.replace(/^\s+|\s+$/g, "");
 
     // Lưu lại tin nhắn vào Database
     await DbService.createNewMessage(user, prompt, responseMessage);
