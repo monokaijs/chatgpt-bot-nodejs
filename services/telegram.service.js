@@ -24,11 +24,20 @@ class TelegramService {
       return bot.sendMessage(chatId, 'Messages has been cleared');
     }
     const timer = new Date().getTime();
-    // Trả lời tin nhắn dựa trên các tin nhắn cũ
-    const responseMsg = await ChatGPTService.generateCompletion(chatMsg, user);
-    const timeDiff = new Date().getTime() - timer;
-    console.log('Taken ' + timeDiff + 'ms to respond (about ' + ~~(timeDiff / 100) / 10 + 's)');
-    return await bot.sendMessage(chatId, responseMsg);
+    try {
+      // Trả lời tin nhắn dựa trên các tin nhắn cũ
+      const responseMsg = await ChatGPTService.generateCompletion(chatMsg, user);
+      const timeDiff = new Date().getTime() - timer;
+      console.log('Taken ' + timeDiff + 'ms to respond (about ' + ~~(timeDiff / 100) / 10 + 's)');
+      return await bot.sendMessage(chatId, responseMsg);
+    } catch (e) {
+      if (e && e.response && e.response.data) {
+        await bot.sendMessage(chatId, e.response.data?.error?.message || "Failed status from OpenAI Platform");
+        console.log(e.response.data?.error);
+      } else {
+        await bot.sendMessage(chatId, "Unexpected error, please check server log for more details.");
+      }
+    }
   }
 }
 
